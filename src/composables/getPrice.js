@@ -3,6 +3,7 @@ import { ref } from 'vue'
 const getPrice = () => {
     const price = ref([])
     const error = ref(null)
+    const price_litecoin = ref()
 
     const loadPrice = async () => {
         try {
@@ -11,6 +12,8 @@ const getPrice = () => {
                 console.log('no data available')
             }
             price.value = await data.json()
+            price_litecoin.value = price.value.litecoin.usd 
+            console.log(price_litecoin.value)
         }
         
         catch(err) {
@@ -18,7 +21,7 @@ const getPrice = () => {
             console.log(error.value)
         }
     }
-    return { price, loadPrice}
+    return { price, loadPrice, price_litecoin }
 }
 
 export default getPrice

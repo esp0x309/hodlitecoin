@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1 class="title">HODLitecoin</h1>
-    <PriceMonitor :price="price" :changeColorUpdatedPrice="changeColorUpdatedPrice"/>
+    <PriceMonitor :price="price" :price_litecoin="price_litecoin"/>
     <PercentMonitor :percent_change="percent_change" />
     <Calculator />
   </div>
@@ -33,14 +33,13 @@ export default {
       loadPercentChange()
     }, 5000)
 
-
-    const { price, error, loadPrice } = getPrice()
+    const { price, price_litecoin, error, loadPrice } = getPrice()
     loadPrice()
 
     const { percent_change, loadPercentChange } = getPercentChange()
     loadPercentChange()
 
-    return { price, percent_change, error }
+    return { price, price_litecoin, percent_change, error }
   }
 }
 </script>
